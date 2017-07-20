@@ -1,28 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "hash.h"
+#include "message.h"
 
 
 void hash() {
-    long int h0 = 0x67452301;
-    long int h1 = 0xefcdab89;
-    long int h2 = 0x98badcfe;
-    long int h3 = 0x10325476;
+    unsigned long h0 = 0x67452301;
+    unsigned long h1 = 0xefcdab89;
+    unsigned long h2 = 0x98badcfe;
+    unsigned long h3 = 0x10325476;
 }
 
 
-long int f(long int b, long int c, long int d) {
+unsigned long f(unsigned long b, unsigned long c, unsigned long d) {
     return ((b & c) | (~b & d));
 }
 
-long int g(long int b, long int c, long int d) {
+unsigned long g(unsigned long b, unsigned long c, unsigned long d) {
     return ((b & d) | (c & ~d));
 }
 
-long int h(long int b, long int c, long int d) {
+unsigned long h(unsigned long b, unsigned long c, unsigned long d) {
     return (b ^ c ^ d);
 }
 
-long int i(long int b, long int c, long int d) {
+unsigned long i(unsigned long b, unsigned long c, unsigned long d) {
     return (c ^ (b | ~d));
 }
