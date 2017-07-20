@@ -1,2 +1,2 @@
-build: main.c
-	gcc main.c -o md5
+build: main.c message.c
+	gcc $^ -o md5
