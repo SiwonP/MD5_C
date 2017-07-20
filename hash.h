@@ -3,12 +3,12 @@
 
 void hash();
 
-unsigned long f(unsigned long , unsigned long , unsigned long);
+unsigned long F(unsigned long , unsigned long , unsigned long);
 
-unsigned long g(unsigned long , unsigned long , unsigned long);
+unsigned long G(unsigned long , unsigned long , unsigned long);
 
-unsigned long h(unsigned long , unsigned long , unsigned long);
+unsigned long H(unsigned long , unsigned long , unsigned long);
 
-unsigned long i(unsigned long , unsigned long , unsigned long);
+unsigned long I(unsigned long , unsigned long , unsigned long);
 
 #endif
