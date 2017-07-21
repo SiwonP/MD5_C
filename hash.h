@@ -1,7 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-void hash();
+void hash(unsigned long*);
 
 unsigned long F(unsigned long , unsigned long , unsigned long);
 

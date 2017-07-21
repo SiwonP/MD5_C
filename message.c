@@ -7,6 +7,10 @@ unsigned long *complete(char *input) {
     int bufferSize = 0;
     unsigned long buffer = 0;
 
+    /*Size of the message coded 
+     * in 64 bits */
+    long long sizeMessage = 0;
+
     int size = strlen(input);
 
     int i = 0;
@@ -23,6 +27,7 @@ unsigned long *complete(char *input) {
             buffer = buffer << 8;
             buffer = buffer | input[i];
             i++;
+            sizeMessage = sizeMessage + 8;
         }
     }
 
@@ -32,6 +37,7 @@ unsigned long *complete(char *input) {
     printf("buffer : %c\n", (char)buffer);
     printf("%c\n", (char)message[0]);
     printf("%c\n", (char)message[1]);
+
 
     return message;
 }

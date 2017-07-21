@@ -4,7 +4,7 @@
 #include "message.h"
 
 
-void hash() {
+void hash(unsigned long *message) {
     unsigned long r[64] = { 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
         5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
         4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
@@ -59,7 +59,7 @@ void hash() {
         unsigned long tmp = d;
         d = c;
         c = b;
-        //b = b + left_rotate(a + f + k[i] + w[g], r[i]);
+        b = b + left_rotate(a + f + k[i] + message[g], r[i]);
         a = tmp;
     }
 
