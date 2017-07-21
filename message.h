@@ -1,6 +1,6 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-char *complete(char*);
+unsigned long *complete(char*);
 
 #endif
