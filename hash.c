@@ -5,6 +5,11 @@
 
 
 void hash(unsigned long *message) {
+
+    for (int n = 0; n < 16; n++) {
+        printf("%ld\n", message[n]);
+    }
+
     unsigned long r[64] = { 
         7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
         5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
@@ -60,6 +65,7 @@ void hash(unsigned long *message) {
         unsigned long tmp = d;
         d = c;
         c = b;
+        printf("left rotate(%x + %x + %x + %x, %ld)\n", (unsigned int)a, (unsigned int)f, (unsigned int)k[i], (unsigned int)message[g], r[i]);
         b = b + left_rotate(a + f + k[i] + message[g], r[i]);
         a = tmp;
     }
@@ -77,11 +83,11 @@ void hash(unsigned long *message) {
 }
 
 unsigned long F(unsigned long b, unsigned long c, unsigned long d) {
-    return ((b & c) | (~b & d));
+    return ((b & c) | ((~b) & d));
 }
 
 unsigned long G(unsigned long b, unsigned long c, unsigned long d) {
-    return ((b & d) | (c & ~d));
+    return ((b & d) | (c & (~d)));
 }
 
 unsigned long H(unsigned long b, unsigned long c, unsigned long d) {
@@ -89,7 +95,7 @@ unsigned long H(unsigned long b, unsigned long c, unsigned long d) {
 }
 
 unsigned long I(unsigned long b, unsigned long c, unsigned long d) {
-    return (c ^ (b | ~d));
+    return (c ^ (b | (~d)));
 }
 
 unsigned long left_rotate(unsigned long n, unsigned long r) {

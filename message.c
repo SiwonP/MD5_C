@@ -11,27 +11,10 @@ unsigned long *complete(char *input) {
      * in 64 bits */
     long long sizeMessage = 0;
 
-    int size = strlen(input);
+    long long size = strlen(input) * 8;
 
     int i = 0;
     int j = 0;
-
-    /*
-    while (input[i] != 0) {
-        if (bufferSize == 4) {
-            message[j] = buffer;
-            buffer = 0;
-            bufferSize = 0;
-            j++;
-        } else {
-            bufferSize++;
-            buffer = buffer << 8;
-            buffer = buffer | input[i];
-            i++;
-            sizeMessage = sizeMessage + 8;
-        }
-    }
-    */
 
     while (input[i] != 0) {
         bufferSize ++;
@@ -49,7 +32,6 @@ unsigned long *complete(char *input) {
         }
     }
 
-    
     unsigned char one = 1;
     one = one << 7;
     buffer = buffer << 8;
@@ -74,8 +56,8 @@ unsigned long *complete(char *input) {
     unsigned long sizePart1 = 0;
     unsigned long sizePart2 = 0;
 
-    sizePart1 = (unsigned long)sizeMessage;
-    sizePart2 = (unsigned long)sizeMessage >> 32;
+    sizePart1 = (unsigned long)size;
+    sizePart2 = (unsigned long)size >> 32;
 
 
     message[j] = sizePart1;
