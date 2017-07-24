@@ -109,3 +109,10 @@ void display_unsigned_long(unsigned int n) {
     printf("%2.2x", c);
     printf("%2.2x", d);
 }
+
+void display_stamp(unsigned int *stamp) {
+    for (int i = 0; i < 4; i++) {
+        display_unsigned_long(stamp[i]);
+    }
+    printf("\n");
+}

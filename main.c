@@ -12,10 +12,12 @@ int main(int argc, char *argv[]) {
     }
 
     unsigned int *message;
+    unsigned int stamp[4];
 
     message = complete(argv[1]);
 
-    hash(message);
+    hash(message, stamp);
 
+    display_stamp(stamp);
     return 1;
 }

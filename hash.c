@@ -4,7 +4,7 @@
 #include "message.h"
 
 
-void hash(unsigned int *message) {
+void hash(unsigned int *message, unsigned int *stamp) {
 
     for (int n = 0; n < 16; n++) {
         //printf("%ld\n", message[n]);
@@ -67,7 +67,7 @@ void hash(unsigned int *message) {
         d = c;
         c = b;
         b = b + left_rotate(f, r[i]);
-        printf("%x\n", left_rotate(f, r[i]));
+        //printf("%x\n", left_rotate(f, r[i]));
    }
 
     h0 = h0 + a;
@@ -75,11 +75,18 @@ void hash(unsigned int *message) {
     h2 = h2 + c;
     h3 = h3 + d;
 
+    /*
     display_unsigned_long(h0);
     display_unsigned_long(h1);
     display_unsigned_long(h2);
     display_unsigned_long(h3);
     printf("\n");
+    */
+
+    stamp[0] = h0;
+    stamp[1] = h1;
+    stamp[2] = h2;
+    stamp[3] = h3;
 }
 
 unsigned int F(unsigned int b, unsigned int c, unsigned int d) {

@@ -1,7 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-void hash(unsigned int*);
+void hash(unsigned int*, unsigned int*);
 
 unsigned int F(unsigned int , unsigned int , unsigned int);
 
