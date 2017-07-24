@@ -16,26 +16,14 @@ unsigned int *complete(char *input) {
     int i = 0;
     int j = 0;
 
-    /*
-    while (input[i] != 0) {
-        bufferSize ++;
-        buffer = buffer << 8;
-        buffer = buffer | input[i];
-        i++;
-
-        if (bufferSize == 4) {
-            message[j] = buffer;
-            buffer = 0;
-            bufferSize = 0;
-            sizeMessage = sizeMessage + 32;
-            j++;
-        }
-    }
-    */
-
     unsigned int tmp = 0;
 
     while (input[i] != 0) {
+        /* Use of the tmp
+         * to append to the 
+         * beginning and not
+         * to the end
+         * ie reading in Little Endian */
         tmp = input[i];
         tmp = tmp << (bufferSize * 8);
         bufferSize++;
@@ -51,19 +39,17 @@ unsigned int *complete(char *input) {
         }
     }
 
-    /* Adding a bit 1 */
+    /* Adding a bit 1 
+     * to the current buffer (even if its 
+     * empty) still with 
+     * the reading in little endian
+     * (that's why i use the tmp
+     * int) */
     unsigned char one = 1;
     one = one << 7;
     tmp = one;
     tmp = tmp << (bufferSize * 8);
     buffer = buffer | tmp;
-    /*
-    buffer = buffer << 8;
-    buffer = buffer | one;
-    bufferSize++;
-
-    buffer = buffer << 8 * (4 - bufferSize);
-    */
 
     message[j] = buffer;
     sizeMessage = sizeMessage + 32;
@@ -81,6 +67,10 @@ unsigned int *complete(char *input) {
     unsigned int sizePart1 = 0;
     unsigned int sizePart2 = 0;
 
+    /* storing the size of the
+     * initial message in bits
+     * in 2 x 32 bits (since
+     * it's coded in 64 bits) */
     sizePart1 = (unsigned int)size;
     sizePart2 = size >> 32;
 
@@ -91,10 +81,6 @@ unsigned int *complete(char *input) {
     message[j] = sizePart2;
     j++;
     sizeMessage = sizeMessage + 32;
-
-    //printf("j : %d\n", j);
-
-    //printf("sizeMessage : %lld\n", sizeMessage);
 
     return message;
 }
