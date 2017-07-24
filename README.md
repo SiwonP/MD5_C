@@ -2,6 +2,9 @@
 
 Implementation from scratch of the MD5 cryptographic function in C
 
+This implementation doesn't support entry longer than 55 chars (this might be an
+update for later).
+
 ## Installation 
 
 ```
