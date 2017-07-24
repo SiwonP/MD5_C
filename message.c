@@ -11,7 +11,7 @@ unsigned long *complete(char *input) {
      * in 64 bits */
     long long sizeMessage = 0;
 
-    long long size = strlen(input) * 8;
+    long long size = strlen(input);
 
     int i = 0;
     int j = 0;
@@ -32,6 +32,7 @@ unsigned long *complete(char *input) {
         }
     }
 
+    /* Adding a bit 1 */
     unsigned char one = 1;
     one = one << 7;
     buffer = buffer << 8;
@@ -76,9 +77,9 @@ unsigned long *complete(char *input) {
 
 void display_unsigned_long(unsigned long n) {
     unsigned char a = (unsigned char)n;
-    unsigned char b = n>>8;
-    unsigned char c = n>>16;
-    unsigned char d = n>>24;
+    unsigned char b = n >> 8;
+    unsigned char c = n >> 16;
+    unsigned char d = n >> 24;
     printf("%2.2x", a);
     printf("%2.2x", b);
     printf("%2.2x", c);
