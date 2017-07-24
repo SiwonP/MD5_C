@@ -11,10 +11,10 @@ void hash(unsigned long *message) {
     }
 
     unsigned long r[64] = { 
-        7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
-        5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
-        4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
-        6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21};
+        7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
+        5,  9, 14, 20, 5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
+        4, 11, 16, 23, 4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
+        6, 10, 15, 21, 6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21};
 
     unsigned long k[64] = {
         0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
@@ -65,9 +65,10 @@ void hash(unsigned long *message) {
         unsigned long tmp = d;
         d = c;
         c = b;
-        printf("left rotate(%x + %x + %x + %x, %ld)\n", (unsigned int)a, (unsigned int)f, (unsigned int)k[i], (unsigned int)message[g], r[i]);
+        //printf("left rotate(%x + %x + %x + %x, %ld)\n", (unsigned int)a, (unsigned int)f, (unsigned int)k[i], (unsigned int)message[g], r[i]);
         b = b + left_rotate(a + f + k[i] + message[g], r[i]);
         a = tmp;
+        printf("%x\n", (unsigned int)left_rotate(a + f + k[i] + message[g], r[i]));
     }
 
     h0 = h0 + a;
@@ -99,5 +100,5 @@ unsigned long I(unsigned long b, unsigned long c, unsigned long d) {
 }
 
 unsigned long left_rotate(unsigned long n, unsigned long r) {
-    return ((n << r) | (n >> (32 - r)));
+    return (((n) << (r)) | ((n) >> (32 - (r))));
 }

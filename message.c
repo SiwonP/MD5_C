@@ -7,22 +7,41 @@ unsigned long *complete(char *input) {
     int bufferSize = 0;
     unsigned long buffer = 0;
 
-    /*Size of the message coded 
-     * in 64 bits */
     long long sizeMessage = 0;
 
-    long long size = strlen(input);
+    /*Size of the message coded 
+     * in 64 bits */
+    long long size = strlen(input) * 8;
 
     int i = 0;
     int j = 0;
 
+    /*
     while (input[i] != 0) {
         bufferSize ++;
         buffer = buffer << 8;
         buffer = buffer | input[i];
-        //sizeMessage = sizeMessage + 8;
         i++;
 
+        if (bufferSize == 4) {
+            message[j] = buffer;
+            buffer = 0;
+            bufferSize = 0;
+            sizeMessage = sizeMessage + 32;
+            j++;
+        }
+    }
+    */
+
+    unsigned int tmp = 0;
+
+    while (input[i] != 0) {
+        tmp = input[i];
+        tmp = tmp << (bufferSize * 8);
+        bufferSize++;
+        buffer = buffer | tmp;
+        i++;
+        
         if (bufferSize == 4) {
             message[j] = buffer;
             buffer = 0;
@@ -35,11 +54,16 @@ unsigned long *complete(char *input) {
     /* Adding a bit 1 */
     unsigned char one = 1;
     one = one << 7;
+    tmp = one;
+    tmp = tmp << (bufferSize * 8);
+    buffer = buffer | tmp;
+    /*
     buffer = buffer << 8;
     buffer = buffer | one;
     bufferSize++;
 
     buffer = buffer << 8 * (4 - bufferSize);
+    */
 
     message[j] = buffer;
     sizeMessage = sizeMessage + 32;
