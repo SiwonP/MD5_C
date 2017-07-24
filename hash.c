@@ -5,7 +5,8 @@
 
 
 void hash(unsigned long *message) {
-    unsigned long r[64] = { 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
+    unsigned long r[64] = { 
+        7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
         5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
         4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
         6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21};
@@ -29,9 +30,9 @@ void hash(unsigned long *message) {
         0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
 
 
-    unsigned long h0 = 0x67452301;
-    unsigned long h1 = 0xefcdab89;
-    unsigned long h2 = 0x98badcfe;
+    unsigned long h0 = 0x67452301; 
+    unsigned long h1 = 0xEFCDAB89;
+    unsigned long h2 = 0x98BADCFE;
     unsigned long h3 = 0x10325476;
 
     unsigned long a = h0;
@@ -63,10 +64,15 @@ void hash(unsigned long *message) {
         a = tmp;
     }
 
-    display_unsigned_long(a);
-    display_unsigned_long(b);
-    display_unsigned_long(c);
-    display_unsigned_long(d);
+    h0 = h0 + a;
+    h1 = h1 + b;
+    h2 = h2 + c;
+    h3 = h3 + d;
+
+    display_unsigned_long(h0);
+    display_unsigned_long(h1);
+    display_unsigned_long(h2);
+    display_unsigned_long(h3);
     printf("\n");
 }
 
