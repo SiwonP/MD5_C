@@ -16,6 +16,7 @@ unsigned long *complete(char *input) {
     int i = 0;
     int j = 0;
 
+    /*
     while (input[i] != 0) {
         if (bufferSize == 4) {
             message[j] = buffer;
@@ -30,14 +31,30 @@ unsigned long *complete(char *input) {
             sizeMessage = sizeMessage + 8;
         }
     }
+    */
+
+    while (input[i] != 0) {
+        bufferSize ++;
+        buffer = buffer << 8;
+        buffer = buffer | input[i];
+        sizeMessage = sizeMessage + 8;
+        i++;
+
+        if (bufferSize == 4) {
+            message[j] = buffer;
+            buffer = 0;
+            bufferSize = 0;
+            j++;
+        }
+    }
+
+    printf("j : %d\n", j);
+
 
     printf("buffer size : %d\n", bufferSize);
     //printf("%d\n", size);
 
-    printf("buffer : %c\n", (char)buffer);
-    printf("%c\n", (char)message[0]);
-    printf("%c\n", (char)message[1]);
-
+    printf("sizeMessage : %lld\n", sizeMessage);
 
     return message;
 }
