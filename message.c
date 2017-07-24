@@ -85,9 +85,9 @@ unsigned long *complete(char *input) {
     j++;
     sizeMessage = sizeMessage + 32;
 
-    printf("j : %d\n", j);
+    //printf("j : %d\n", j);
 
-    printf("sizeMessage : %lld\n", sizeMessage);
+    //printf("sizeMessage : %lld\n", sizeMessage);
 
     return message;
 }
