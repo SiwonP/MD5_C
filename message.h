@@ -3,4 +3,5 @@
 
 unsigned long *complete(char*);
 
+void display_unsigned_long(unsigned long);
 #endif

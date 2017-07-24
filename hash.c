@@ -63,6 +63,11 @@ void hash(unsigned long *message) {
         a = tmp;
     }
 
+    display_unsigned_long(a);
+    display_unsigned_long(b);
+    display_unsigned_long(c);
+    display_unsigned_long(d);
+    printf("\n");
 }
 
 unsigned long F(unsigned long b, unsigned long c, unsigned long d) {

@@ -92,3 +92,13 @@ unsigned long *complete(char *input) {
     return message;
 }
 
+void display_unsigned_long(unsigned long n) {
+    unsigned char a = (unsigned char)n;
+    unsigned char b = n>>8;
+    unsigned char c = n>>16;
+    unsigned char d = n>>24;
+    printf("%2.2x", a);
+    printf("%2.2x", b);
+    printf("%2.2x", c);
+    printf("%2.2x", d);
+}
