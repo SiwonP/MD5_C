@@ -77,11 +77,15 @@ unsigned long *complete(char *input) {
     sizePart1 = (unsigned long)sizeMessage;
     sizePart2 = (unsigned long)sizeMessage >> 32;
 
+
+    message[j] = sizePart1;
+    j++;
+    sizeMessage = sizeMessage + 32;
+    message[j] = sizePart2;
+    j++;
+    sizeMessage = sizeMessage + 32;
+
     printf("j : %d\n", j);
-
-
-    printf("buffer size : %d\n", bufferSize);
-    //printf("%d\n", size);
 
     printf("sizeMessage : %lld\n", sizeMessage);
 
