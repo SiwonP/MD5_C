@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
-unsigned long *complete(char *input) {
-    static unsigned long message[16] = {0};
+unsigned int *complete(char *input) {
+    static unsigned int message[16] = {0};
     int bufferSize = 0;
-    unsigned long buffer = 0;
+    unsigned int buffer = 0;
 
     long long sizeMessage = 0;
 
@@ -78,11 +78,11 @@ unsigned long *complete(char *input) {
     }
 
 
-    unsigned long sizePart1 = 0;
-    unsigned long sizePart2 = 0;
+    unsigned int sizePart1 = 0;
+    unsigned int sizePart2 = 0;
 
-    sizePart1 = (unsigned long)size;
-    sizePart2 = (unsigned long)size >> 32;
+    sizePart1 = (unsigned int)size;
+    sizePart2 = size >> 32;
 
 
     message[j] = sizePart1;
@@ -99,7 +99,7 @@ unsigned long *complete(char *input) {
     return message;
 }
 
-void display_unsigned_long(unsigned long n) {
+void display_unsigned_long(unsigned int n) {
     unsigned char a = (unsigned char)n;
     unsigned char b = n >> 8;
     unsigned char c = n >> 16;

@@ -1,15 +1,15 @@
 #ifndef HASH_H
 #define HASH_H
 
-void hash(unsigned long*);
+void hash(unsigned int*);
 
-unsigned long F(unsigned long , unsigned long , unsigned long);
+unsigned int F(unsigned int , unsigned int , unsigned int);
 
-unsigned long G(unsigned long , unsigned long , unsigned long);
+unsigned int G(unsigned int , unsigned int , unsigned int);
 
-unsigned long H(unsigned long , unsigned long , unsigned long);
+unsigned int H(unsigned int , unsigned int , unsigned int);
 
-unsigned long I(unsigned long , unsigned long , unsigned long);
+unsigned int I(unsigned int , unsigned int , unsigned int);
 
-unsigned long left_rotate(unsigned long, unsigned long);
+unsigned int left_rotate(unsigned int, unsigned int);
 #endif

@@ -4,19 +4,19 @@
 #include "message.h"
 
 
-void hash(unsigned long *message) {
+void hash(unsigned int *message) {
 
     for (int n = 0; n < 16; n++) {
-        printf("%ld\n", message[n]);
+        //printf("%ld\n", message[n]);
     }
 
-    unsigned long r[64] = { 
+    unsigned int r[64] = { 
         7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
         5,  9, 14, 20, 5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
         4, 11, 16, 23, 4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
         6, 10, 15, 21, 6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21};
 
-    unsigned long k[64] = {
+    unsigned int k[64] = {
         0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
         0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
         0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -35,18 +35,18 @@ void hash(unsigned long *message) {
         0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
 
 
-    unsigned long h0 = 0x67452301; 
-    unsigned long h1 = 0xEFCDAB89;
-    unsigned long h2 = 0x98BADCFE;
-    unsigned long h3 = 0x10325476;
+    unsigned int h0 = 0x67452301; 
+    unsigned int h1 = 0xEFCDAB89;
+    unsigned int h2 = 0x98BADCFE;
+    unsigned int h3 = 0x10325476;
 
-    unsigned long a = h0;
-    unsigned long b = h1;
-    unsigned long c = h2;
-    unsigned long d = h3;
+    unsigned int a = h0;
+    unsigned int b = h1;
+    unsigned int c = h2;
+    unsigned int d = h3;
 
-    unsigned long f;
-    unsigned long g;
+    unsigned int f;
+    unsigned int g;
 
     for (int i = 0; i < 64; i++) {
         if ( i < 16 ) {
@@ -62,14 +62,13 @@ void hash(unsigned long *message) {
             f = I(b,c,d);
             g = (7 * i) % 16;
         }
-        unsigned long tmp = d;
+        f = f + a + k[i] + message[g];
+        a = d;
         d = c;
         c = b;
-        //printf("left rotate(%x + %x + %x + %x, %ld)\n", (unsigned int)a, (unsigned int)f, (unsigned int)k[i], (unsigned int)message[g], r[i]);
-        b = b + left_rotate(a + f + k[i] + message[g], r[i]);
-        a = tmp;
-        printf("%x\n", (unsigned int)left_rotate(a + f + k[i] + message[g], r[i]));
-    }
+        b = b + left_rotate(f, r[i]);
+        printf("%x\n", left_rotate(f, r[i]));
+   }
 
     h0 = h0 + a;
     h1 = h1 + b;
@@ -83,22 +82,22 @@ void hash(unsigned long *message) {
     printf("\n");
 }
 
-unsigned long F(unsigned long b, unsigned long c, unsigned long d) {
+unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
     return ((b & c) | ((~b) & d));
 }
 
-unsigned long G(unsigned long b, unsigned long c, unsigned long d) {
+unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
     return ((b & d) | (c & (~d)));
 }
 
-unsigned long H(unsigned long b, unsigned long c, unsigned long d) {
+unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
     return (b ^ c ^ d);
 }
 
-unsigned long I(unsigned long b, unsigned long c, unsigned long d) {
+unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
     return (c ^ (b | (~d)));
 }
 
-unsigned long left_rotate(unsigned long n, unsigned long r) {
+unsigned int left_rotate(unsigned int n, unsigned int r) {
     return (((n) << (r)) | ((n) >> (32 - (r))));
 }

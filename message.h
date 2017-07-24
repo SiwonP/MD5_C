@@ -1,7 +1,7 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-unsigned long *complete(char*);
+unsigned int *complete(char*);
 
-void display_unsigned_long(unsigned long);
+void display_unsigned_long(unsigned int);
 #endif

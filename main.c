@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    unsigned long *message;
+    unsigned int *message;
 
     message = complete(argv[1]);
 
