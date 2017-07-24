@@ -37,16 +37,45 @@ unsigned long *complete(char *input) {
         bufferSize ++;
         buffer = buffer << 8;
         buffer = buffer | input[i];
-        sizeMessage = sizeMessage + 8;
+        //sizeMessage = sizeMessage + 8;
         i++;
 
         if (bufferSize == 4) {
             message[j] = buffer;
             buffer = 0;
             bufferSize = 0;
+            sizeMessage = sizeMessage + 32;
             j++;
         }
     }
+
+    
+    unsigned char one = 1;
+    one = one << 7;
+    buffer = buffer << 8;
+    buffer = buffer | one;
+    bufferSize++;
+
+    buffer = buffer << 8 * (4 - bufferSize);
+
+    message[j] = buffer;
+    sizeMessage = sizeMessage + 32;
+    j++;
+    bufferSize = 0;
+    buffer = 0;
+
+    while (sizeMessage < 448) {
+        message[j] = 0;
+        sizeMessage = sizeMessage + 32;
+        j++;
+    }
+
+
+    unsigned long sizePart1 = 0;
+    unsigned long sizePart2 = 0;
+
+    sizePart1 = (unsigned long)sizeMessage;
+    sizePart2 = (unsigned long)sizeMessage >> 32;
 
     printf("j : %d\n", j);
 
