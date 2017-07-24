@@ -6,10 +6,6 @@
 
 void hash(unsigned int *message, unsigned int *stamp) {
 
-    for (int n = 0; n < 16; n++) {
-        //printf("%ld\n", message[n]);
-    }
-
     unsigned int r[64] = { 
         7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
         5,  9, 14, 20, 5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
@@ -74,14 +70,6 @@ void hash(unsigned int *message, unsigned int *stamp) {
     h1 = h1 + b;
     h2 = h2 + c;
     h3 = h3 + d;
-
-    /*
-    display_unsigned_long(h0);
-    display_unsigned_long(h1);
-    display_unsigned_long(h2);
-    display_unsigned_long(h3);
-    printf("\n");
-    */
 
     stamp[0] = h0;
     stamp[1] = h1;
