@@ -1,2 +1,5 @@
+CC=gcc
+EXEC=md5
+
 build: main.c message.c hash.c
-	gcc $^ -o md5
+	$(CC) $^ -o $(EXEC) -Wall
