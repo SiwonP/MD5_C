@@ -4,7 +4,8 @@
 #include "message.h"
 
 
-void hash(unsigned int *message, unsigned int *stamp) {
+void hash(unsigned int *message, unsigned int *stamp)
+{
 
     unsigned int r[64] = { 
         7, 12, 17, 22, 7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
@@ -77,19 +78,23 @@ void hash(unsigned int *message, unsigned int *stamp) {
     stamp[3] = h3;
 }
 
-unsigned int F(unsigned int b, unsigned int c, unsigned int d) {
+unsigned int F(unsigned int b, unsigned int c, unsigned int d)
+{
     return ((b & c) | ((~b) & d));
 }
 
-unsigned int G(unsigned int b, unsigned int c, unsigned int d) {
+unsigned int G(unsigned int b, unsigned int c, unsigned int d)
+{
     return ((b & d) | (c & (~d)));
 }
 
-unsigned int H(unsigned int b, unsigned int c, unsigned int d) {
+unsigned int H(unsigned int b, unsigned int c, unsigned int d)
+{
     return (b ^ c ^ d);
 }
 
-unsigned int I(unsigned int b, unsigned int c, unsigned int d) {
+unsigned int I(unsigned int b, unsigned int c, unsigned int d)
+{
     return (c ^ (b | (~d)));
 }
 
