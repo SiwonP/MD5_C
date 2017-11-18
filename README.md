@@ -8,7 +8,11 @@ update for later).
 ## Installation 
 
 ```
-git clone https://www.github.com/SiwonP/MD5_C && cd MD5_C && make
+git clone https://www.github.com/SiwonP/MD5_C 
+mkdir build
+cd build
+cmake -G"Unix Makefiles" ..
+make
 ```
 
 ## Usage
