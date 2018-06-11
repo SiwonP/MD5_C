@@ -32,7 +32,7 @@ Follow the instruction below to build the library + the CLI from source :
 git clone https://www.github.com/SiwonP/MD5_C 
 mkdir build
 cd build
-cmake -G"Unix Makefiles" ..
+cmake ..
 make
 ```
 
