@@ -29,7 +29,7 @@ Even though there is no doc up to now, it will be likely generated with
 Follow the instruction below to build the library + the CLI from source : 
 
 ```
-git clone https://www.github.com/SiwonP/MD5_C 
+git clone https://www.github.com/SiwonP/libmd5 
 mkdir build
 cd build
 cmake ..
