@@ -12,4 +12,5 @@ unsigned int H(unsigned int , unsigned int , unsigned int);
 unsigned int I(unsigned int , unsigned int , unsigned int);
 
 unsigned int left_rotate(unsigned int, unsigned int);
+
 #endif

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "src/message.h"
-#include "src/hash.h"
+#include "message.h"
+#include "hash.h"
 
 #define MAX 64
 
