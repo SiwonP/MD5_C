@@ -1,6 +1,10 @@
 add_executable(
-    md5
+    md5-cli
     main.c
-    hash.c
-    message.c
+    md5.c
+    )
+
+add_library(
+    md5
+    md5.c
     )
