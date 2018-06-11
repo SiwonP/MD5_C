@@ -5,6 +5,6 @@ add_executable(
     )
 
 add_library(
-    md5
+    md5 SHARED
     md5.c
     )
