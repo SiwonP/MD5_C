@@ -24,5 +24,4 @@ void display_unsigned_long(unsigned int);
 
 void display_stamp(unsigned int*);
 
-
 #endif
